@@ -1,39 +1,42 @@
-# Sosyal Medya Büyüme Paneli
+# TR2 Sosyal Medya Büyüme Paneli
 
-YouTube, Instagram, TikTok ve Facebook paylaşımları için **gerçek izleyiciye erişim ve organik büyüme planlama** aracı.
+**Ücretsiz ilk sürüm:** YouTube, Instagram, TikTok ve Facebook için linkten organik kampanya planlama, ayrı gerçek hesap envanteri ve manuel analiz paneli.
 
-## Çalıştırma (OpenCode ile)
+## Kurulum / OpenCode
 
-1. Bu depoyu OpenCode'da açın: `https://github.com/medya-tr2tv/sosyal-medya-buyume`.
-2. `index.html` dosyasını tarayıcıda açın. Node.js, Python, paket kurulumu ve ücretli servis gerekmez.
-3. İsterseniz GitHub Pages'i Settings → Pages → Deploy from a branch → main → /(root) şeklinde etkinleştirin.
+1. OpenCode'da `https://github.com/medya-tr2tv/sosyal-medya-buyume` deposunu klonla veya aç.
+2. `index.html` dosyasını Chrome'da aç. Başka paket veya sunucu gerekmiyor.
+3. Dilersen GitHub > Settings > Pages > Deploy from a branch > main > /(root) yoluyla statik web sayfası olarak açabilirsin. (Depo şu anda public.)
 
-## İlk sürümün çalışan özellikleri
+## İki birbirinden bağımsız bölüm
 
-- Yalnızca paylaşım URL'si girilir; video veya fotoğraf yüklenmez.
-- YouTube, Instagram, TikTok, Facebook bağlantıları tanınır.
-- Müzik (arabesk, pop, rap vb.), film/dizi, komedi, haber ve diğer alt türler seçilir.
-- İçerik türü ve büyüme hedefine göre hedef kitle, yayın ve tanıtım önerileri oluşturulur.
-- Kampanya kaydedilir, seçilir, silinir.
-- Gerçek verilere dayanan **manuel** istatistik girişi: görüntülenme, beğeni, yorum, paylaşım, yeni abone/takipçi, izleme süresi.
-- Beğeni/izlenme ve abone/izlenme oranları hesaplanır.
-- Bağlantı ve tanıtım metni kopyalanabilir; X, WhatsApp ve Telegram'da kullanıcı onayıyla paylaşım açılabilir.
-- Veriler sadece bu tarayıcının localStorage alanında tutulur; JSON yedeği indirilebilir ve geri yüklenebilir.
+### Büyüme Botu
+- Video/fotoğraf dosyası **yüklenmez**, yalnızca gönderi URL'si girilir.
+- URL'den YouTube, Instagram, TikTok veya Facebook algılanır.
+- Müzik (arabesk, pop, rap vb.), film/dizi (komedi vb.), haber, spor ve diğer alt kategoriler seçilir.
+- Gerçek abone/takipçi, izleyici tutma, gerçek beğeni/yorum veya dengeli büyüme hedefi seçilir.
+- Hedef kitle açıklaması, kategoriye özel erişim adımları, 7 günlük ücretsiz görevler ve paylaşım metni oluşturulur.
+- Kampanyalar kaydedilir ve silinir. WhatsApp, Telegram ve X paylaşım ekranları kullanıcı onayı için açılabilir.
 
-## Şimdilik yapılmayanlar
+### Gerçek Hesaplarım
+- YouTube, Instagram, TikTok ve Facebook hesaplarını ayrı bölümde listele.
+- Kendi hesabının adını, URL'sini ve yönetim yetkisi onayını kaydet; **programda yapay sayı sınırı yoktur**. Tarayıcı depolama sınırı geçerlidir.
+- Bu bölüm OAuth yetkilendirmesi veya canlı oturum bağlantısı yapmaz. Şifre, token ve oturum bilgisi girilmez.
+- Hesapları kaydetmek otomatik beğeni, izleme, abone olma ya da yorum yazma başlatmaz.
 
-Bu sürüm **gerçek görüntülenme, beğeni, yorum veya abonelik göndermez**. Platform hesaplarına bağlanmaz, harici API kullanmaz ve 7/24 bulut otomasyonu değildir. Hesaplar için OAuth, sunucu, ilgili API izinleri ve güvenli gizli anahtar yönetimi ayrıca geliştirilmelidir. Özellikle YouTube'da geçerli izleme saatlerini sadece YouTube Studio doğrular.
+### Sonuç ve Analiz
+- Gerçek performans verilerini YouTube Studio / Instagram Insights / TikTok Analytics / Meta Business Suite üzerinden manuel gir.
+- Beğeni/izlenme, abone/izlenme, etkileşim/izlenme ve ortalama izleme sürelerini hesaplar.
+- Veriler yalnızca kendi tarayıcında (localStorage) tutulur; JSON yedeği indirilebilir/geri yüklenebilir.
 
-Sahte hesap, toplu otomatik beğeni, otomatik abonelik, döngüsel oynatma veya yapay izlenme saati üretilmez. İçerikleri yalnızca izinli kanallarda duyurmayı ve gerçek kullanıcıların gönüllü katılımını hedefler.
+## Gerçek etkileşim için öneriler
+- Türle ilgili gerçek topluluklarda grup kurallarına uyarak içerik duyurusu
+- Kısa kesit ve orijinal içerikle uzun videoya doğal yönlendirme
+- Kanal bitiş ekranı, sabit yorum, oynatma listesi ve açık gönüllü abonelik çağrısı
+- İçerik üreticileriyle izinli işbirliği ve ilgili izleyicilerle gerçek yorumlar
+- Haftalık analize göre paylaşım saati, giriş ve başlık iyileştirmesi
 
-## Sonraki aşamalar
+## Sınırlar / sonraki geliştirme
+Bu sürüm **izlenme, beğeni, abone veya takipçi göndermez**; gerçek kullanıcıları doğrudan keşfetmez; hesaplara otomatik bağlanmaz; API bağlantısı, 7/24 sunucu ve arka plan paylaşımı içermez. Resmi platform OAuth, API izinleri, güvenli backend ve zamanlama daha sonra geliştirilebilir. İzin verilse bile yapay izlenme döngüsü, toplu otomatik beğeni, otomatik abonelik ve izinsiz hesap kullanımı eklenmez. YouTube'un para kazanmaya uygun izlenme saatleri yalnızca resmi YouTube Studio verileriyle doğrulanabilir.
 
-1. Güvenli sunucu + veritabanı + giriş.
-2. YouTube Analytics resmi OAuth bağlantısı ve kanal sahibinin yetkilendirmesi.
-3. Meta/Instagram Graph API için uygun profesyonel hesap bağlantısı.
-4. TikTok/Facebook için erişilebilen resmi API yetkileri.
-5. İzinli paylaşım planlama, zamanlama, raporlama ve hata kayıtları.
-
-## Gizlilik
-
-Depo herkese açıktır. Şifre, access token, API anahtarı, kişisel bilgi veya müşteri verisi GitHub'a commit edilmemelidir.
+**Güvenlik:** Depo şu anda herkese açık. GitHub'a parola, API anahtarı veya kişisel müşteri verisi yükleme.
