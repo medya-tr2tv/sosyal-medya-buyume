@@ -3,222 +3,153 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Sosyal medya bağlantıları için ücretsiz organik erişim ve hesap yönetim paneli">
-<title>Sosyal Medya Yönetimi | Büyüme ve Hesap Yönetimi</title>
+<meta name="description" content="YouTube ve TikTok için kişisel hesap ve bağlantı görevleri yönetimi">
+<title>Hesap ve Bağlantı Yönetimi</title>
 <style>
-:root{color-scheme:dark;--bg:#0a1020;--panel:#131d31;--panel2:#192640;--line:#2c3950;--txt:#f4f7ff;--sub:#9cacbf;--blue:#66a8ff;--mint:#70e3bd}
-*{box-sizing:border-box}body{margin:0;background:linear-gradient(145deg,#0a1020,#0f1a2c);color:var(--txt);font:15px/1.55 system-ui,-apple-system,"Segoe UI",Arial,sans-serif;min-height:100vh}a{color:#8cbbff}
-.wrap{max-width:1160px;margin:auto;padding:24px 18px 60px}
-header{display:flex;justify-content:space-between;gap:12px;align-items:center;padding-bottom:24px;border-bottom:1px solid var(--line)}header h1{margin:0;font-size:26px;letter-spacing:-.4px}header p{color:var(--sub);margin:3px 0 0}.mark{display:inline-block;color:#071a2f;background:var(--mint);border-radius:10px;padding:3px 9px;margin-right:8px}
-.tabs{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0}.tab{background:transparent;border:1px solid var(--line);border-radius:12px;color:var(--sub);padding:11px 16px;cursor:pointer;font-weight:650}.tab.active{background:#183e73;color:#fff;border-color:#4c9aff}.page{display:none}.page.active{display:block}
-.layout{display:grid;grid-template-columns:1fr 1fr;gap:18px}.card{padding:22px;background:var(--panel);border:1px solid var(--line);border-radius:18px;box-shadow:0 14px 36px #02091622}.card h2{font-size:19px;margin:0 0 6px}.card h3{font-size:15px;margin:18px 0 8px;color:#c8ddff}.muted{color:var(--sub);font-size:13px;margin:0 0 16px}.tag{font-size:12px;display:inline-block;border:1px solid #45607e;padding:3px 8px;border-radius:99px;color:#a6d5ff}
-label{display:block;color:#d6e1f1;margin:13px 0 6px;font-size:13px;font-weight:650}input,select,textarea{width:100%;border:1px solid #3c4e69;background:#0c1628;border-radius:11px;color:var(--txt);font:inherit;padding:12px;outline:none}input:focus,select:focus,textarea:focus{border-color:var(--blue)}textarea{min-height:80px;resize:vertical}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}.row{display:flex;flex-wrap:wrap;align-items:center;gap:9px}.between{justify-content:space-between}
-button{font:inherit;cursor:pointer;border-radius:10px;border:1px solid #3f5673;color:#f6faff;background:#233750;padding:10px 14px}button:hover{filter:brightness(1.15)}button.primary{background:#387cf3;border-color:#387cf3;font-weight:700}button.danger{background:#3b2430;border-color:#803847}button.sm{font-size:12px;padding:6px 10px}.full{width:100%;margin-top:18px}
-.notice{border-left:3px solid var(--mint);background:#16372e;padding:12px 14px;margin:16px 0;border-radius:8px;font-size:13px}.warning{border-left-color:#f2c575;background:#3a3022}.item{border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-top:10px;background:#111b2d}.item strong{overflow-wrap:anywhere}.item small{color:var(--sub);display:block}.item.selected{border-color:#5f9dff;background:#162b49}.item .row{margin-top:9px}.steps{padding-left:21px;margin:10px 0}.steps li{margin:11px 0}.steps strong{display:block;color:#d8e8ff}.empty{color:var(--sub);font-size:14px;padding:25px 0}.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:14px}.metric{border:1px solid #32465d;border-radius:12px;padding:13px;background:#101d31}.metric b{display:block;font-size:19px}.metric small{color:var(--sub)}
-.check{display:flex;align-items:flex-start;gap:10px;margin:10px 0;color:#dce6f4;font-size:14px}.check input{width:auto;margin-top:4px}.banner{margin:18px 0;padding:13px 16px;border:1px solid #385670;border-radius:12px;color:#c9e6f9;background:#172a40}
-footer{color:var(--sub);font-size:12px;margin-top:28px;text-align:center}.hidden{display:none!important}
-@media(max-width:800px){.layout{grid-template-columns:1fr}.grid2{grid-template-columns:1fr}.metrics{grid-template-columns:repeat(2,1fr)}header{align-items:flex-start}header h1{font-size:23px}}
+:root{color-scheme:dark;--bg:#0c1120;--panel:#151f32;--panel2:#101b2e;--edge:#2f405e;--text:#f5f8ff;--muted:#a6b7cd;--accent:#639dfa;--good:#8ee6c1;--warn:#ffe0a2}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(140deg,#0a1120,#142239);font:15px/1.5 system-ui,-apple-system,"Segoe UI",Arial,sans-serif;color:var(--text);min-height:100vh}a{color:#add0ff}
+.shell{max-width:1200px;margin:auto;padding:25px 18px 55px}
+header{display:flex;justify-content:space-between;gap:15px;align-items:center;border-bottom:1px solid var(--edge);padding-bottom:22px}h1{margin:0;font-size:26px}h2{margin:0 0 8px;font-size:20px}h3{font-size:16px;margin:16px 0 8px}.sub{color:var(--muted);font-size:13px;margin:4px 0 16px}.pill{border:1px solid #486185;color:#bdd7ff;border-radius:30px;padding:5px 10px;font-size:12px;white-space:nowrap}
+.banner{background:#1d3044;border:1px solid #3b5977;border-radius:12px;padding:13px 16px;margin:22px 0;font-size:13px;color:#dbeaff}
+.layout{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.panel{background:var(--panel);border:1px solid var(--edge);border-radius:16px;padding:23px;min-width:0}
+label{display:block;font-weight:650;font-size:13px;margin:12px 0 5px;color:#e0e9f9}
+input,select,textarea{display:block;width:100%;font:inherit;background:#0c172a;color:#fff;border:1px solid #3e5371;border-radius:10px;padding:11px 12px;outline:none}
+input:focus,select:focus,textarea:focus{border-color:#78b4ff}
+button{font:inherit;padding:10px 14px;background:#243b5a;color:#fff;border:1px solid #41638d;border-radius:10px;cursor:pointer}button:hover{filter:brightness(1.13)}button.primary{background:#367af0;border-color:#367af0;font-weight:700}button.danger{background:#3c2632;border-color:#7d4359}button.small{padding:6px 10px;font-size:12px}.full{width:100%;margin-top:14px}
+.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.between{justify-content:space-between}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.check{display:flex;gap:9px;align-items:center;font-size:14px;color:#e3eafd}.check input{width:16px;height:16px;accent-color:#5897f8}
+.list{display:grid;gap:10px}.item{border:1px solid var(--edge);border-radius:12px;padding:13px;background:var(--panel2)}.item strong{display:block;overflow-wrap:anywhere}.item .sub{margin:3px 0 9px}
+.empty{padding:24px 10px;color:var(--muted);font-size:14px;text-align:center}
+.msg{color:var(--good);font-size:13px;margin-top:9px;min-height:1.4em}
+.important{color:var(--warn)}.tag{font-size:12px;border:1px solid #415a76;color:#c3d8ef;padding:2px 7px;border-radius:20px}
+.section{margin-top:20px}footer{text-align:center;color:var(--muted);font-size:12px;margin-top:28px}
+summary{cursor:pointer;color:#dbe8fc}.note{font-size:13px;color:var(--muted)}
+@media(max-width:850px){.layout,.grid2{grid-template-columns:1fr}header{align-items:flex-start}h1{font-size:22px}}
 </style>
 </head>
 <body>
-<div class="wrap">
-<header><div><h1><span class="mark">SM</span>Sosyal Medya Yönetimi</h1><p>Ücretsiz, bağlantı odaklı organik erişim ve gerçek hesaplar paneli</p></div><span class="tag">Yerel ilk sürüm</span></header>
-<div class="banner"><b>İki ayrı alan:</b> Büyüme Botu kampanya ve paylaşım planları hazırlar. Gerçek Hesaplarım kendi hesaplarının envanterini tutar. Hesapları kaydetmek, platformda oturum açmak veya otomatik beğeni izni vermek değildir.</div>
-<nav class="tabs" aria-label="Ana bölümler">
-<button class="tab active" type="button" data-tab="grow">Büyüme Botu</button>
-<button class="tab" type="button" data-tab="accounts">Gerçek Hesaplarım</button>
-<button class="tab" type="button" data-tab="results">Sonuç ve Analiz</button>
-</nav>
-
-<section id="grow" class="page active">
+<div class="shell">
+<header><div><h1>Hesap ve Bağlantı Yönetimi</h1><p class="sub">YouTube ve TikTok · İki bölüm, tek ekran</p></div><span class="pill">Ücretsiz · Tarayıcı sürümü</span></header>
+<div class="banner"><strong>Bu ekranın çalışma kapsamı:</strong> Kendi hesaplarının profil bağlantılarını sınırsız sayıda listeleyebilir, video bağlantılarını ve istediğin işlemleri kaydedebilirsin. Hesaplarda oturum açmak, beğenmek, yorumlamak, izlemek veya abone olmak için ilgili platform açılır ve <strong>işlemi sen yaparsın</strong>. Bu uygulama hesabı arka planda açık tutmaz, çevrimiçi görünümü taklit etmez veya toplu otomatik etkileşim göndermez.</div>
 <div class="layout">
-<div class="card"><h2>Bağlantıyla kampanya oluştur</h2><p class="muted">Fotoğraf veya video yüklemezsin. Paylaşımın bağlantısını yapıştırırsın.</p>
-<label for="postUrl">YouTube / Instagram / TikTok / Facebook paylaşım linki</label><input id="postUrl" type="url" autocomplete="off" placeholder="https://www.youtube.com/watch?v=..." required>
-<p id="detected" class="muted" style="margin-top:6px">Bağlantı platformu otomatik algılanır.</p>
-<div class="grid2"><div><label for="category">İçerik türü</label><select id="category"><option value="music">Müzik</option><option value="film">Film / Dizi</option><option value="news">Haber / Güncel</option><option value="other">Diğer</option></select></div>
-<div><label for="subcat">Alt tür</label><select id="subcat"></select></div></div>
-<div class="grid2"><div><label for="targetType">Hangi etkileşimi artırmak istiyorsun?</label><select id="targetType"><option value="likes">Beğeni</option><option value="views">İzlenme</option><option value="comments">Yorum</option><option value="shares">Yeniden paylaşım</option><option value="follows">Abone / Takipçi</option></select></div><div><label for="targetCount">Kazanılmasını hedeflediğin sayı</label><input id="targetCount" type="number" min="1" step="1" value="100"></div></div>
-<label for="targetBaseline">Gönderide şu anda görünen sayı (isteğe bağlı)</label><input id="targetBaseline" type="number" min="0" step="1" value="0">
-<p class="muted" style="margin-top:7px">Örnek: Şu an 35 beğeni varsa ve 100 yeni beğeni istiyorsan, 35 ve 100 yaz. Bu hedef kaydıdır; platforma otomatik beğeni gönderilmez.</p>
-<label for="objective">Öncelikli hedef</label><select id="objective"><option value="followers">Gerçek abone / takipçi</option><option value="watch">Gerçek izlenme / izleyici tutma</option><option value="interaction">Beğeni / yorum / paylaşım</option><option value="balanced">Dengeli büyüme</option></select>
-<div class="grid2"><div><label for="audienceCountry">Hedef ülke</label><select id="audienceCountry"><option>Türkiye</option><option>Uluslararası</option><option>Almanya</option><option>Azerbaycan</option><option>Diğer</option></select></div><div><label for="audienceLang">Hedef dil</label><select id="audienceLang"><option>Türkçe</option><option>İngilizce</option><option>Almanca</option><option>Diğer</option></select></div></div>
-<label for="name">Kampanya adı (isteğe bağlı)</label><input id="name" maxlength="100" placeholder="Örn. Gündem haber kampanyası">
-<button id="saveCampaign" class="primary full" type="button">Hedefi ve kampanyayı kaydet</button>
-<p id="formMsg" class="muted" role="status"></p>
-</div>
-<div class="card"><div class="row between"><h2>Kampanyalarım</h2><span id="campaignTotal" class="tag">0 kayıt</span></div><p class="muted">İçeriğinizi seçerek ücretsiz büyüme adımlarını görün.</p><div id="campaignList"></div></div>
-</div>
-<div id="planPanel" class="card hidden" style="margin-top:18px">
-<div class="row between"><h2 id="planTitle">Organik büyüme planı</h2><span id="planPlatform" class="tag"></span></div>
-<p id="planAudience" class="muted"></p><div id="targetOverview" class="notice"></div>
-<div class="grid2"><div><h3>İlgili gerçek izleyiciye ulaşma</h3><ol class="steps" id="planSteps"></ol></div><div><h3>Otomasyon Durumu</h3><p class="muted">Bu kampanya için gerçekten kullanılabilen işlevler ve bağlantı gerektiren özellikler.</p><div id="automationStatus"></div></div></div>
-<label for="captionOut">Önerilen tanıtım metni</label><textarea id="captionOut" readonly></textarea>
-<div class="row" style="margin-top:10px"><button id="copyCaption" type="button">Metni kopyala</button><button id="copyLink" type="button">Linki kopyala</button></div>
-<p class="muted" style="margin-top:12px">Hedef platformlarda yetkili hesap bağlantıları henüz kurulmadı. Şimdilik tanıtım metnini ve bağlantıyı kopyalayabilirsin.</p>
-</div>
+<section class="panel" aria-labelledby="accTitle">
+<div class="row between"><h2 id="accTitle">1. Hesaplarım</h2><span class="tag" id="accountCount">0 hesap</span></div>
+<p class="sub">YouTube veya TikTok hesaplarını ekle. Programda bir sayı sınırı yoktur; tarayıcı saklama kapasitesi geçerlidir. Şifre girme.</p>
+<label for="accountPlatform">Platform</label><select id="accountPlatform"><option value="YouTube">YouTube</option><option value="TikTok">TikTok</option></select>
+<label for="accountName">Hesap adı</label><input id="accountName" maxlength="120" placeholder="Örnek: Müzik hesabım">
+<label for="accountUrl">Profil bağlantısı</label><input id="accountUrl" type="url" placeholder="https://www.youtube.com/@...">
+<label class="check" style="margin-top:14px"><input id="ownAccount" type="checkbox">Bu hesap benim veya yönetim iznim var.</label>
+<button id="saveAccount" class="primary full" type="button">Hesabı kaydet</button>
+<p id="accountMessage" class="msg" role="status"></p>
+<div class="section"><h3>Kayıtlı hesaplar</h3><div class="list" id="accountList"></div></div>
 </section>
-
-<section id="accounts" class="page">
-<div class="layout">
-<div class="card"><h2>Gerçek Hesaplarım</h2><p class="muted">Kendi hesabını eklemek için kayıt oluştur. Yazılımsal sayı sınırı yoktur. Parola veya token girme.</p>
-<label for="accountPlatform">Platform</label><select id="accountPlatform"><option>YouTube</option><option>Instagram</option><option>TikTok</option><option>Facebook</option></select>
-<label for="accountName">Hesap adı</label><input id="accountName" maxlength="100" placeholder="Örn. Haber kanalım">
-<label for="accountUrl">Profil / sayfa adresi</label><input id="accountUrl" type="url" placeholder="https://...">
-<label class="check"><input id="owned" type="checkbox">Bu hesabın yönetim yetkisi bende.</label>
-<button id="saveAccount" class="primary full" type="button">Hesabı listeye kaydet</button><p id="accountMsg" role="status" class="muted"></p>
-<div class="notice warning"><b>Yetkilendirme henüz yok:</b> Bu ekran resmi OAuth bağlantısı kurmaz; sadece kendi hesaplarının listesini saklar. Hesaplar otomatik beğeni, izleme, takip veya yorum yapmak üzere kullanılmaz.</div>
-</div>
-<div class="card"><div class="row between"><h2>Kayıtlı hesaplar</h2><span id="accountTotal" class="tag">0 hesap</span></div><p class="muted">Dört platformun tamamı desteklenir. Aynı platformdan birden fazla hesap ekleyebilirsin.</p><div id="accountList"></div></div>
-</div>
-<div class="card" style="margin-top:18px"><h2>Hesaplarla yapılabilecek ücretsiz işlemler</h2>
-<div class="grid2"><div><h3>İzinli içerik dağıtımı</h3><p class="muted">Sahip olduğun sayfalarda kendi özgün içeriğini paylaşma, uygun grup ve topluluklarda duyurma, işbirliği yapan yayıncılara önerme.</p></div>
-<div><h3>İleride resmi bağlantılar</h3><p class="muted">Platform onayı ve resmi API yetkisi varsa içerik planlama ve yetkili sayfalara gönderi yayınlama. Şu an aktif değil.</p></div></div></div>
-</section>
-
-<section id="results" class="page">
-<div class="layout"><div class="card"><h2>Gerçek performans verileri</h2><p class="muted">Rakamları YouTube Studio, Instagram Insights, TikTok Analytics veya Meta Business Suite'ten alıp gir. Bu ekran sahte veri üretmez.</p>
-<label for="metricCampaign">Kampanya seç</label><select id="metricCampaign"></select>
+<section class="panel" aria-labelledby="linkTitle">
+<div class="row between"><h2 id="linkTitle">2. Bağlantı Görevleri</h2><span class="tag" id="taskCount">0 bağlantı</span></div>
+<p class="sub">İşlem yapmak istediğin YouTube veya TikTok videosunun bağlantısını gir ve işlemleri seç.</p>
+<label for="postUrl">Video bağlantısı</label><input id="postUrl" type="url" placeholder="https://www.youtube.com/watch?v=...">
+<p id="detectedPlatform" class="sub">Platform bağlantıdan otomatik algılanır.</p>
+<label for="postNote">Not (isteğe bağlı)</label><input id="postNote" maxlength="150" placeholder="Örnek: Yeni müzik videosu">
+<label>Yapmak istediğin işlemler</label>
 <div class="grid2">
-<div><label for="views">Görüntülenme</label><input id="views" type="number" min="0" step="1" value="0"></div>
-<div><label for="likes">Beğeni</label><input id="likes" type="number" min="0" step="1" value="0"></div>
-<div><label for="comments">Yorum</label><input id="comments" type="number" min="0" step="1" value="0"></div>
-<div><label for="shares">Paylaşım</label><input id="shares" type="number" min="0" step="1" value="0"></div>
-<div><label for="follows">Yeni abone / takipçi</label><input id="follows" type="number" min="0" step="1" value="0"></div>
-<div><label for="watch">Toplam izleme süresi (dakika)</label><input id="watch" type="number" min="0" step="0.01" value="0"></div>
-</div><button id="saveMetrics" class="primary full" type="button">Gerçek istatistikleri kaydet</button><p class="muted" id="metricMsg" role="status"></p></div>
-<div class="card"><h2>Performans özeti</h2><p class="muted">Oranlar yalnızca girdiğin gerçek verilere dayanır.</p><div class="metrics">
-<div class="metric"><b id="likeRate">—</b><small>Beğeni / izlenme</small></div><div class="metric"><b id="followRate">—</b><small>Abone / izlenme</small></div><div class="metric"><b id="engRate">—</b><small>Toplam etkileşim / izlenme</small></div>
-<div class="metric"><b id="avgWatch">—</b><small>Ort. izleme (dk)</small></div><div class="metric"><b id="totalViews">—</b><small>Gerçek izlenme</small></div><div class="metric"><b id="totalFollows">—</b><small>Yeni takipçi</small></div>
-</div><div class="notice">YouTube'un para kazanmaya uygun izlenme saatlerini bu panel hesaplayıp onaylayamaz. Resmi geçerli saatleri YouTube Studio'dan doğrula.</div></div></div>
-<div class="card" style="margin-top:18px"><h2>Verilerim</h2><p class="muted">Bu ücretsiz sürüm kayıtları yalnızca kullandığın tarayıcıda saklar. Tarayıcı verilerini silersen kayıtlar kaybolabilir.</p><div class="row"><button id="exportData" type="button">JSON yedeği indir</button><button id="importBtn" type="button">JSON yedeğini geri yükle</button><input type="file" id="importFile" class="hidden" accept=".json,application/json"></div><p class="muted" id="backupMsg" role="status"></p></div>
+<label class="check"><input type="checkbox" id="watch" checked>İzle</label>
+<label class="check"><input type="checkbox" id="like">Beğen</label>
+<label class="check"><input type="checkbox" id="comment">Yorum yap</label>
+<label class="check"><input type="checkbox" id="follow">Abone ol / takip et</label>
+</div>
+<button class="primary full" id="saveTask" type="button">Bağlantıyı görev listesine ekle</button>
+<p class="msg" id="taskMessage" role="status"></p>
+<div class="section"><h3>Bağlantı listem</h3><div class="list" id="taskList"></div></div>
 </section>
-<footer>Sosyal Medya Yönetimi · Ücretsiz yerel MVP · Resmi OAuth/API veya bulut otomasyonu henüz bağlı değil. Yapay beğeni, abonelik ya da izlenme üretilmez.</footer>
+</div>
+<div class="panel section">
+<div class="row between"><h2>Verileri yönet</h2><span class="tag">Yalnızca bu tarayıcıda</span></div>
+<p class="sub">Hesaplar, yalnızca bağlantı ve not olarak kaydedilir. Platform parolaları, giriş bilgileri ve çerezleri kaydedilmez.</p>
+<div class="row"><button id="backup" type="button">JSON yedeği indir</button><button id="restore" type="button">Yedeği geri yükle</button><button id="clear" class="danger" type="button">Bu panelin kayıtlarını sil</button><input type="file" id="restoreFile" accept=".json,application/json" hidden></div>
+<p id="backupMessage" class="msg" role="status"></p>
+<details style="margin-top:14px"><summary>Hangi özellikler aktif?</summary><p class="note">Aktif: Hesap bağlantısı listesi, görev listesi, bağlantıyı açma, elle tamamlandı işaretleme, kayıt/yedekleme. Aktif değil: OAuth ile hesap girişini otomatik yönetme, sürekli oturum / aktif görünüm, otomatik video oynatma, beğeni, yorum ve abonelik. Bunlar gerçekleşmiş gibi işaretlenmez.</p></details>
+</div>
+<footer>Hesap ve Bağlantı Yönetimi · Resmî platform kurallarına uygun manuel görev yardımcısı. Paylaşımlar ve oturumlar YouTube/TikTok üzerinde yönetilir.</footer>
 </div>
 <script>
 (function(){
 "use strict";
-const KEY="sosyal_medya_yonetimi_v1";
-const defaults={campaigns:[],accounts:[],selected:null};
-let state=load();
+const STORAGE_KEY="sosyal_hesap_gorev_v2";
+const state=read();
 const $=id=>document.getElementById(id);
-const cats={music:["Arabesk","Pop","Rap / Hip-Hop","Rock","Türk Halk Müziği","Türk Sanat Müziği","Diğer müzik"],film:["Komedi","Dizi","Romantik","Aksiyon","Dram","Korku","Belgesel","Diğer film"],news:["Gündem","Siyaset","Ekonomi","Spor","Teknoloji","Kültür sanat","Yerel haber"],other:["Eğitim","Gezi","Yemek","Oyun","Moda","Eğlence","Diğer"]};
-const catNames={music:"Müzik",film:"Film / Dizi",news:"Haber",other:"Diğer"};
-function load(){try{const d=JSON.parse(localStorage.getItem(KEY));if(d&&Array.isArray(d.campaigns)&&Array.isArray(d.accounts))return d;}catch(e){}return structuredClone(defaults);}
-function persist(){try{localStorage.setItem(KEY,JSON.stringify(state));}catch(e){alert("Tarayıcı depolama alanı dolu olabilir. JSON yedeği al.");}}
-function id(){return String(Date.now())+"-"+Math.random().toString(36).slice(2,8);}
-function elem(tag,text,cl){const e=document.createElement(tag);if(text!==undefined)e.textContent=text;if(cl)e.className=cl;return e;}
-function add(parent,tag,text,cl){const e=elem(tag,text,cl);parent.appendChild(e);return e;}
-function platformFor(url){try{const u=new URL(url);if(!["http:","https:"].includes(u.protocol))return null;const h=u.hostname.toLowerCase();let list=[["YouTube",["youtube.com","youtu.be"]],["Instagram",["instagram.com"]],["TikTok",["tiktok.com"]],["Facebook",["facebook.com","fb.watch"]]];for(const [p,ds] of list){if(ds.some(d=>h===d||h.endsWith("."+d)))return p;}return null;}catch(e){return null;}}
-function safeLink(url){try{const u=new URL(url);return u.protocol==="https:"||u.protocol==="http:"?u.toString():null;}catch(e){return null;}}
-function pct(n,d){return d>0?(100*n/d).toFixed(2)+"%":"—";}
-function n(v){const x=Number(v);return Number.isFinite(x)&&x>=0?x:0;}
-function fmt(v){return Number(v).toLocaleString("tr-TR",{maximumFractionDigits:2});}
-function subCats(){const sel=$("subcat"),cat=$("category").value;sel.replaceChildren();cats[cat].forEach(v=>{const o=elem("option",v);o.value=v;sel.appendChild(o);});}
-function recordMsg(id,text){$(id).textContent=text;}
-function audiences(c){const base={
-music:"Bu türü aktif olarak dinleyen kişiler, sanatçı hayranları ve ilgili müzik toplulukları",
-film:"Bu türde film/dizi izleyen kişiler, eleştiri toplulukları ve eğlence takipçileri",
-news:"Bu haber konusuyla ilgilenen okurlar, ilgili yerel topluluklar ve haber takipçileri",
-other:"Bu içerik alanına ilgi duyan izleyiciler ve ilgili topluluklar"
-};return base[c.cat]+" · "+c.country+" · "+c.lang;}
-function plan(c){const genre=c.sub.toLowerCase();let steps=[];
-if(c.cat==="music"){steps=[
-["Kısa bir kesit hazırlayın","İzin ve telif haklarına sahip olduğunuz 15–30 saniyelik bir Shorts / Reels / TikTok kesitiyle merak uyandırın; asıl bağlantıya yönlendirin."],
-["Türle ilgili topluluğa ulaşın",c.sub+" dinleyicilerinin bulunduğu, paylaşıma izin veren gruplara özgün açıklamayla katılın; aynı metni herkese yollamayın."],
-["Sanatçı ve yayıncı işbirliği","Türle ilgili mikro içerik üreticilerine gönüllü işbirliği önerin. Beğeni/abonelik karşılığında ödül veya takas kullanmayın."]
-];}
-else if(c.cat==="film"){steps=[
-["Merak uyandıran giriş","Haklarını kullanabildiğiniz kısa bir sahne veya değerlendirme ile ilk saniyelerde konuyu açıklayın."],
-["Tartışma başlatın","İzleyenlere sahne, karakter veya tür hakkında doğal bir soru sorun; gerçek yorumlara yanıt verin."],
-["İlgili içerik üreticileri","Sinema/dizi üzerine konuşan içerik üreticileriyle izinli işbirliği yapın."]
-];}
-else if(c.cat==="news"){steps=[
-["Haberin değerini açıkça anlatın","Güvenilir, doğrulanmış bilgiyi tek cümlelik anlaşılır bir özetle sunun; yanıltıcı başlık kullanmayın."],
-["Konuyla ilgili topluluklar","Yerel gündem veya konuya özel, paylaşıma izin veren topluluklara katkı sağlayan bir özetle paylaşın."],
-["Kaynak ve bağlam ekleyin","Konuya ilişkin kaynakları belirtin, tartışmayı açık bir soruyla başlatın ve gerçek yanıtları takip edin."]
-];}
-else{steps=[
-["Güçlü açılış","İçeriğin izleyiciye sağlayacağı değeri ilk cümlede anlatın."],
-["Doğru topluluğa ulaşın","İlgili ve paylaşım izni veren gruplarda konuyla bağlantılı özgün anlatımla duyurun."],
-["İşbirliği yapın","Benzer içerik üreten hesaplarla izinsiz etkileşim değil, gönüllü ortak yayın veya konu alışverişi planlayın."]
-];}
-if(c.platform==="YouTube"){steps.push(["YouTube aboneliğine dönüşüm","Video bitiş ekranı, ilgili oynatma listesi, sabit yorum ve kanal için açık 'Abone ol' çağrısını kullanın. Uzun videoya Shorts'tan doğal geçiş sağlayın."]);steps.push(["İzleyici tutma","YouTube Studio'da ilk 30 saniyeyi ve izleyici terk noktalarını inceleyin; sonraki videonun açılışını iyileştirin."]);}
-if(c.platform==="Instagram"){steps.push(["Reels ve hikâye dağıtımı","Hikâyede bağlantı/etiket kullanın; uygun işbirliği gönderileri için karşı tarafın onayını alın."]);}
-if(c.platform==="TikTok"){steps.push(["Keşfet ve seri üretimi","İlgili anahtar kelimeler, net açılış ve birbirini takip eden orijinal kısa videolar planlayın."]);}
-if(c.platform==="Facebook"){steps.push(["Sayfa ve topluluk","Kendi sayfalarında özgün başlıkla paylaşın, grup kurallarına uygun tartışma açın."]);}
-steps.push(["Gönüllü abonelik ve paylaşım","İlgilenen gerçek kişilere açık takip/abonelik çağrısı yapın; izinsiz mesaj, toplu beğeni veya yapay izleme kullanmayın."]);
-return steps;}
-function makeCaption(c){const intro=c.cat==="music"?"🎵 "+c.sub+" sevenler için yeni içerik":c.cat==="news"?"Güncel haber | "+c.sub+" konusunda yeni paylaşım":c.cat==="film"?"🎬 "+c.sub+" sevenler için bir içerik":"Yeni "+c.sub+" içeriği";const call=c.goal==="followers"?"Beğendiyseniz hesabı takip edebilir veya kanala abone olabilirsiniz.":c.goal==="watch"?"İzledikten sonra görüşünüzü paylaşın.":c.goal==="interaction"?"Konuyla ilgili düşüncelerinizi yorumlarda konuşalım.":"İçerik ilginizi çekerse paylaşabilir ve hesabı takip edebilirsiniz.";return intro+"\n"+call+"\n"+c.url;}
-const statuses=[
-["Bağlantı tanıma ve kategori seçimi","ÇALIŞIYOR","YouTube, Instagram, TikTok ve Facebook bağlantıları algılanır."],
-["Kampanya ve hedef kitle planı","ÇALIŞIYOR","Kampanya, kategoriye göre organik tanıtım planı ve önerilen metin kaydedilir."],
-["Tanıtım bağlantısı ve metin hazırlama","ÇALIŞIYOR","Bağlantı ve önerilen metin hazırlanır, kopyalanabilir. Otomatik gönderim yoktur."],
-["Kayıtlı hesaplardan otomatik yayın","HENÜZ BAĞLI DEĞİL","İzinli sayfalarda yayınlama için resmi OAuth ve platform API bağlantısı gerekir."],
-["Otomatik performans ölçümü","HENÜZ BAĞLI DEĞİL","Şu anda gerçek istatistikler Sonuç ve Analiz sekmesine manuel girilir."],
-["7/24 zamanlanmış işlemler","HENÜZ KURULMADI","Bu statik sayfada arka plan görevi/sunucu yoktur."]
-];
-function renderAutomationStatus(){
-const target=$("automationStatus");target.replaceChildren();
-statuses.forEach(([title,status,desc])=>{const box=add(target,"div",undefined,"item");const line=add(box,"div",undefined,"row between");add(line,"strong",title);add(line,"span",status,"tag");add(box,"small",desc);});
+function read(){try{const d=JSON.parse(localStorage.getItem(STORAGE_KEY));if(d&&Array.isArray(d.accounts)&&Array.isArray(d.tasks))return d;}catch(e){}return {accounts:[],tasks:[]};}
+function store(){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(state));return true;}catch(e){alert("Depolama alanı dolmuş olabilir. Lütfen yedek alın.");return false;}}
+function uid(){return String(Date.now())+"-"+Math.random().toString(36).slice(2,10);}
+function node(tag,value,cls){const e=document.createElement(tag);if(value!==undefined)e.textContent=value;if(cls)e.className=cls;return e;}
+function attach(parent,tag,value,cls){const e=node(tag,value,cls);parent.appendChild(e);return e;}
+function platform(url){try{const u=new URL(url);if(u.protocol!=="https:"&&u.protocol!=="http:")return null;const h=u.hostname.toLowerCase();if(["youtube.com","youtu.be"].some(d=>h===d||h.endsWith("."+d)))return "YouTube";if(h==="tiktok.com"||h.endsWith(".tiktok.com"))return "TikTok";return null;}catch(e){return null;}}
+function linkValid(url){try{const u=new URL(url);return (u.protocol==="https:"||u.protocol==="http:")&&!!platform(url);}catch(e){return false;}}
+function msg(id,text){$(id).textContent=text;}
+function linkButton(row,label,url){const a=attach(row,"a",label);a.href=url;a.target="_blank";a.rel="noopener noreferrer";a.style.padding="7px 0";return a;}
+function renderAccounts(){
+ const host=$("accountList");host.replaceChildren();$("accountCount").textContent=state.accounts.length.toLocaleString("tr-TR")+" hesap";
+ if(!state.accounts.length)attach(host,"div","Kayıtlı hesap yok.","empty");
+ state.accounts.forEach(a=>{
+ const box=attach(host,"div",undefined,"item");attach(box,"strong",a.name);attach(box,"p",a.platform+" · Yalnızca kayıtlı; oturum doğrulanmadı","sub");
+ const row=attach(box,"div",undefined,"row");
+ linkButton(row,"Profili / giriş ekranını aç",a.url);
+ const del=attach(row,"button","Kaldır","danger small");del.onclick=()=>{if(confirm("Bu hesap kaydı silinsin mi?")){state.accounts=state.accounts.filter(x=>x.id!==a.id);store();renderAccounts();}};
+ });
 }
-
-const metricLabels={likes:"beğeni",views:"izlenme",comments:"yorum",shares:"paylaşım",follows:"abone / takipçi"};
-function targetProgress(c){
-const t=c.target;
-if(!t||!Object.hasOwn(metricLabels,t.kind))return null;
-const current=c.metrics?.[t.kind];
-const recorded=typeof current==="number"&&Number.isFinite(current)&&current>=0;
-const gained=recorded?Math.max(0,current-(t.baseline||0)):0;
-return {kind:t.kind,amount:t.amount,baseline:t.baseline||0,gained,recorded,pct:recorded?Math.min(100,100*gained/t.amount):0};
+function renderTasks(){
+ const host=$("taskList");host.replaceChildren();$("taskCount").textContent=state.tasks.length.toLocaleString("tr-TR")+" bağlantı";
+ if(!state.tasks.length)attach(host,"div","Henüz bağlantı eklenmedi.","empty");
+ state.tasks.forEach(t=>{
+ const box=attach(host,"div",undefined,"item");attach(box,"strong",t.note||t.platform+" bağlantısı");
+ const actions=Object.keys(t.actions).filter(k=>t.actions[k]);
+ const labels={watch:"İzle",like:"Beğen",comment:"Yorum yap",follow:"Abone ol / takip et"};
+ attach(box,"p",t.platform+" · "+actions.map(k=>labels[k]).join(" / "),"sub");
+ const row=attach(box,"div",undefined,"row");linkButton(row,"Gönderiyi aç",t.url);
+ const done=attach(row,"button",t.done?"Elle tamamlandı":"Tamamlandı olarak işaretle","small");done.onclick=()=>{t.done=!t.done;store();renderTasks();};
+ const del=attach(row,"button","Kaldır","danger small");del.onclick=()=>{if(confirm("Bu bağlantı kaydı silinsin mi?")){state.tasks=state.tasks.filter(x=>x.id!==t.id);store();renderTasks();}};
+ const p=attach(box,"p",t.done?"Bu kaydı kullanıcı tamamlandı olarak işaretledi. Platform işlemi otomatik doğrulanmadı.":"Bekliyor: Gönderi platformda kullanıcı tarafından açılmalı.","sub");
+ });
 }
-function renderCampaigns(){const host=$("campaignList");host.replaceChildren();$("campaignTotal").textContent=state.campaigns.length+" kayıt";
-if(!state.campaigns.length)add(host,"div","Henüz kampanya eklenmedi.","empty");
-state.campaigns.forEach(c=>{const box=add(host,"div",undefined,"item"+(state.selected===c.id?" selected":""));
-add(box,"strong",c.name||c.sub+" · "+c.platform);add(box,"small",c.platform+" | "+catNames[c.cat]+" / "+c.sub+" | "+c.country);
-const progress=targetProgress(c);
-if(progress){add(box,"small","Hedef: +"+fmt(progress.amount)+" "+metricLabels[progress.kind]+" | "+(progress.recorded?"Raporlanan artış: "+fmt(progress.gained):"Gerçek sonuç henüz girilmedi"));if(progress.recorded){const bar=add(box,"progress");bar.max=100;bar.value=progress.pct;bar.style.width="100%";bar.setAttribute("aria-label","Hedef ilerlemesi");}}
-const row=add(box,"div",undefined,"row");
-const open=add(row,"button","Planı aç","sm");open.onclick=()=>{state.selected=c.id;persist();render();document.getElementById("planPanel").scrollIntoView({behavior:"smooth"});};
-const anchor=add(row,"a","Gönderiyi aç");anchor.href=c.url;anchor.target="_blank";anchor.rel="noopener noreferrer";
-const del=add(row,"button","Sil","sm danger");del.onclick=()=>{if(confirm("Bu kampanya silinsin mi?")){state.campaigns=state.campaigns.filter(x=>x.id!==c.id);if(state.selected===c.id)state.selected=state.campaigns[0]?.id||null;persist();render();}};
-});}
-function renderPlan(){const p=$("planPanel"),c=state.campaigns.find(x=>x.id===state.selected);p.classList.toggle("hidden",!c);if(!c)return;
-$("planTitle").textContent=c.name||c.sub+" · "+c.platform;$("planPlatform").textContent=c.platform;$("planAudience").textContent="Hedef kitle: "+audiences(c)+" | Öncelik: "+({followers:"Gerçek abone / takipçi",watch:"Gerçek izlenme / izleyici tutma",interaction:"Beğeni / yorum / paylaşım",balanced:"Dengeli büyüme"}[c.goal]||"Organik tanıtım");
-const tp=targetProgress(c);
-$("targetOverview").textContent=tp?("Hedef: +"+fmt(tp.amount)+" "+metricLabels[tp.kind]+". Başlangıç: "+fmt(tp.baseline)+". "+(tp.recorded?"Raporlanan artış: "+fmt(tp.gained)+" ("+tp.pct.toFixed(1)+"%).":"Gerçekleşen sonuç girilmedi.")+" Bu hedef, Instagram/YouTube/TikTok/Facebook sayacına otomatik etkileşim göndermez."):"Bu kampanya için sayısal hedef tanımlanmamış.";
-const host=$("planSteps");host.replaceChildren();for(const [title,desc] of plan(c)){const li=add(host,"li");add(li,"strong",title);add(li,"span",desc);}
-renderAutomationStatus();
-$("captionOut").value=makeCaption(c);
-}
-function campaign(){const url=$("postUrl").value.trim(),p=platformFor(url);if(!p){recordMsg("formMsg","Geçerli bir YouTube, Instagram, TikTok veya Facebook bağlantısı gir.");return;}
-const amount=Number($("targetCount").value),baseline=Number($("targetBaseline").value);
-if(!Number.isSafeInteger(amount)||amount<1||!Number.isSafeInteger(baseline)||baseline<0){recordMsg("formMsg","Hedef ve başlangıç sayısı geçerli tam sayı olmalı.");return;}
-const c={id:id(),url,platform:p,cat:$("category").value,sub:$("subcat").value,goal:$("objective").value,country:$("audienceCountry").value,lang:$("audienceLang").value,name:$("name").value.trim(),created:new Date().toISOString(),done:[],metrics:null,target:{kind:$("targetType").value,amount,baseline}};state.campaigns.unshift(c);state.selected=c.id;persist();render();recordMsg("formMsg","Hedef kaydedildi. Gerçek etkileşim göndermek yerine erişim planı hazırlandı; sonuçları Analiz bölümünden girebilirsin.");}
-function account(){const platform=$("accountPlatform").value,url=$("accountUrl").value.trim(),name=$("accountName").value.trim();if(!name||!safeLink(url)||!$("owned").checked){recordMsg("accountMsg","Geçerli hesap adı, URL ve yönetim yetkisi onayı gerekiyor.");return;}
-const detected=platformFor(url);if(detected!==platform){recordMsg("accountMsg","Profil linki seçtiğin platforma ait olmalı.");return;}
-if(state.accounts.some(x=>x.platform===platform&&x.url===url)){recordMsg("accountMsg","Bu hesap zaten kayıtlı.");return;}
-state.accounts.push({id:id(),platform,url,name});persist();$("accountName").value="";$("accountUrl").value="";$("owned").checked=false;recordMsg("accountMsg","Hesap listelendi. Henüz OAuth ile bağlanmış değil.");renderAccounts();}
-function renderAccounts(){const host=$("accountList");host.replaceChildren();$("accountTotal").textContent=state.accounts.length+" hesap";if(!state.accounts.length)add(host,"div","Kayıtlı hesap yok.","empty");
-state.accounts.forEach(a=>{const box=add(host,"div",undefined,"item");add(box,"strong",a.name);add(box,"small",a.platform+" · Listeye kayıtlı (yetkilendirilmedi)");
-const row=add(box,"div",undefined,"row");const link=add(row,"a","Profili aç");link.href=a.url;link.target="_blank";link.rel="noopener noreferrer";
-const del=add(row,"button","Listeden sil","sm danger");del.onclick=()=>{if(confirm("Bu hesap kaydı silinsin mi?")){state.accounts=state.accounts.filter(x=>x.id!==a.id);persist();renderAccounts();}};});}
-function renderMetrics(){const sel=$("metricCampaign"),old=sel.value||state.selected;sel.replaceChildren();state.campaigns.forEach(c=>{const opt=elem("option",c.name||c.platform+" - "+c.sub);opt.value=c.id;sel.appendChild(opt);});if(state.campaigns.some(c=>c.id===old))sel.value=old;else if(state.campaigns.length)sel.value=state.campaigns[0].id;showMetrics();}
-function showMetrics(){const c=state.campaigns.find(x=>x.id===$("metricCampaign").value),m=c?.metrics||{};["views","likes","comments","shares","follows","watch"].forEach(k=>$(k).value=m[k]??0);const views=n(m.views),likes=n(m.likes),comments=n(m.comments),shares=n(m.shares),follows=n(m.follows),watch=n(m.watch);
-$("likeRate").textContent=pct(likes,views);$("followRate").textContent=pct(follows,views);$("engRate").textContent=pct(likes+comments+shares,views);$("avgWatch").textContent=views?fmt(watch/views):"—";$("totalViews").textContent=fmt(views);$("totalFollows").textContent=fmt(follows);}
-function saveMetrics(){const c=state.campaigns.find(x=>x.id===$("metricCampaign").value);if(!c){recordMsg("metricMsg","Önce kampanya oluştur.");return;}
-const data={};for(const k of ["views","likes","comments","shares","follows","watch"]){const v=Number($(k).value);if(!Number.isFinite(v)||v<0||(k!=="watch"&&!Number.isInteger(v))){recordMsg("metricMsg","Lütfen yalnızca geçerli pozitif istatistik gir.");return;}data[k]=v;}c.metrics=data;persist();showMetrics();renderCampaigns();renderPlan();recordMsg("metricMsg","Gerçek sonuçlar kaydedildi ve hedef ilerlemesi güncellendi.");}
-async function copy(text){try{await navigator.clipboard.writeText(text);alert("Kopyalandı.");}catch(e){window.prompt("Metni elle kopyala:",text);}}
-function exportData(){const blob=new Blob([JSON.stringify(state,null,2)],{type:"application/json"}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="sosyal-medya-yedek.json";a.click();setTimeout(()=>URL.revokeObjectURL(url),3000);}
-function importData(file){if(!file)return;if(file.size>2_000_000){recordMsg("backupMsg","Yedek çok büyük.");return;}const reader=new FileReader();reader.onload=()=>{try{const d=JSON.parse(reader.result);if(!Array.isArray(d.campaigns)||!Array.isArray(d.accounts)||d.campaigns.length>10000||d.accounts.length>10000)throw Error("format");const camps=d.campaigns.filter(c=>typeof c.url==="string"&&platformFor(c.url)&&typeof c.id==="string"&&typeof c.cat==="string"&&Object.hasOwn(cats,c.cat)).map(c=>({...c,name:String(c.name||"").slice(0,100),done:Array.isArray(c.done)?c.done.filter(i=>Number.isInteger(i)&&i>=0&&i<7):[]}));const accounts=d.accounts.filter(a=>typeof a.name==="string"&&typeof a.url==="string"&&platformFor(a.url)===a.platform&&typeof a.id==="string");if(!confirm("Mevcut kayıtlar yedek dosyasıyla değiştirilsin mi?"))return;state={campaigns:camps,accounts,selected:camps[0]?.id||null};persist();render();recordMsg("backupMsg","Yedek geri yüklendi.");}catch(e){recordMsg("backupMsg","Yedek okunamadı veya geçersiz.");}};reader.readAsText(file);}
-function render(){renderCampaigns();renderPlan();renderAccounts();renderMetrics();}
-document.querySelectorAll("[data-tab]").forEach(t=>{t.onclick=()=>{document.querySelectorAll("[data-tab]").forEach(x=>x.classList.toggle("active",x===t));document.querySelectorAll(".page").forEach(p=>p.classList.toggle("active",p.id===t.dataset.tab));};});
-$("category").onchange=subCats;$("postUrl").oninput=()=>{$("detected").textContent=platformFor($("postUrl").value)?"Algılanan platform: "+platformFor($("postUrl").value):"Geçerli bir platform bağlantısı gir.";};
-$("saveCampaign").onclick=campaign;$("saveAccount").onclick=account;$("metricCampaign").onchange=showMetrics;$("saveMetrics").onclick=saveMetrics;
-$("copyCaption").onclick=()=>copy($("captionOut").value);$("copyLink").onclick=()=>{const c=state.campaigns.find(x=>x.id===state.selected);if(c)copy(c.url);};
-
-$("exportData").onclick=exportData;$("importBtn").onclick=()=>$("importFile").click();$("importFile").onchange=e=>importData(e.target.files[0]);
-subCats();render();
+$("saveAccount").onclick=()=>{
+ const name=$("accountName").value.trim(),url=$("accountUrl").value.trim(),p=$("accountPlatform").value;
+ if(!name||platform(url)!==p||!$("ownAccount").checked){msg("accountMessage","Hesap adı, uygun profil adresi ve yetki onayı gerekiyor.");return;}
+ if(state.accounts.some(a=>a.url===url)){msg("accountMessage","Bu adres zaten kayıtlı.");return;}
+ state.accounts.push({id:uid(),name,url,platform:p});store();$("accountName").value="";$("accountUrl").value="";$("ownAccount").checked=false;
+ msg("accountMessage","Hesap listelendi; giriş yapılmadı ve sürekli oturum açılmadı.");renderAccounts();
+};
+$("postUrl").oninput=()=>{const p=platform($("postUrl").value.trim());$("detectedPlatform").textContent=p?"Platform: "+p:"Geçerli YouTube veya TikTok bağlantısı gir.";};
+$("saveTask").onclick=()=>{
+ const url=$("postUrl").value.trim(),p=platform(url),actions={watch:$("watch").checked,like:$("like").checked,comment:$("comment").checked,follow:$("follow").checked};
+ if(!linkValid(url)){msg("taskMessage","YouTube veya TikTok gönderi adresi gerekli.");return;}
+ if(!Object.values(actions).some(Boolean)){msg("taskMessage","En az bir işlem seç.");return;}
+ state.tasks.unshift({id:uid(),url,platform:p,note:$("postNote").value.trim(),actions,done:false});
+ store();$("postUrl").value="";$("postNote").value="";msg("taskMessage","Bağlantı kaydedildi. İşlem yapmak için gönderiyi aç.");renderTasks();
+};
+$("backup").onclick=()=>{
+ const blob=new Blob([JSON.stringify(state,null,2)],{type:"application/json"});
+ const u=URL.createObjectURL(blob),a=document.createElement("a");a.href=u;a.download="hesap-baglanti-yedek.json";a.click();setTimeout(()=>URL.revokeObjectURL(u),3000);
+};
+$("restore").onclick=()=>$("restoreFile").click();
+$("restoreFile").onchange=e=>{
+ const file=e.target.files[0];if(!file)return;if(file.size>5000000){msg("backupMessage","Yedek dosyası çok büyük.");return;}
+ const reader=new FileReader();
+ reader.onload=()=>{
+ try{
+ const data=JSON.parse(reader.result);
+ if(!Array.isArray(data.accounts)||!Array.isArray(data.tasks))throw Error("format");
+ const accounts=data.accounts.filter(a=>a&&typeof a.id==="string"&&typeof a.name==="string"&&typeof a.url==="string"&&a.platform===platform(a.url));
+ const tasks=data.tasks.filter(t=>t&&typeof t.id==="string"&&typeof t.url==="string"&&t.platform===platform(t.url)&&t.actions&&typeof t.actions==="object");
+ if(!confirm("Bu panelin mevcut kayıtları yedek dosyasıyla değişsin mi?"))return;
+ state.accounts=accounts;state.tasks=tasks;store();renderAccounts();renderTasks();msg("backupMessage","Yedek geri yüklendi.");
+ }catch(err){msg("backupMessage","Geçerli hesap/görev yedeği okunamadı.");}
+ };
+ reader.readAsText(file);
+};
+$("clear").onclick=()=>{
+ if(!confirm("Bu paneldeki bütün hesap ve bağlantı kayıtları silinsin mi? Bu işlem geri alınamaz (önce yedek alabilirsin)."))return;
+ state.accounts=[];state.tasks=[];store();renderAccounts();renderTasks();msg("backupMessage","Bu panelin kayıtları temizlendi. Eski uygulama arşivi etkilenmez.");
+};
+renderAccounts();renderTasks();
 })();
 </script>
 </body>
