@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="Sosyal medya bağlantıları için ücretsiz organik erişim ve hesap yönetim paneli">
-<title>TR2 Sosyal | Büyüme ve Hesap Yönetimi</title>
+<title>Sosyal Medya Yönetimi | Büyüme ve Hesap Yönetimi</title>
 <style>
 :root{color-scheme:dark;--bg:#0a1020;--panel:#131d31;--panel2:#192640;--line:#2c3950;--txt:#f4f7ff;--sub:#9cacbf;--blue:#66a8ff;--mint:#70e3bd}
 *{box-sizing:border-box}body{margin:0;background:linear-gradient(145deg,#0a1020,#0f1a2c);color:var(--txt);font:15px/1.55 system-ui,-apple-system,"Segoe UI",Arial,sans-serif;min-height:100vh}a{color:#8cbbff}
@@ -23,7 +23,7 @@ footer{color:var(--sub);font-size:12px;margin-top:28px;text-align:center}.hidden
 </head>
 <body>
 <div class="wrap">
-<header><div><h1><span class="mark">TR2</span>Sosyal Medya Yönetimi</h1><p>Ücretsiz, bağlantı odaklı organik erişim ve gerçek hesaplar paneli</p></div><span class="tag">Yerel ilk sürüm</span></header>
+<header><div><h1><span class="mark">SM</span>Sosyal Medya Yönetimi</h1><p>Ücretsiz, bağlantı odaklı organik erişim ve gerçek hesaplar paneli</p></div><span class="tag">Yerel ilk sürüm</span></header>
 <div class="banner"><b>İki ayrı alan:</b> Büyüme Botu kampanya ve paylaşım planları hazırlar. Gerçek Hesaplarım kendi hesaplarının envanterini tutar. Hesapları kaydetmek, platformda oturum açmak veya otomatik beğeni izni vermek değildir.</div>
 <nav class="tabs" aria-label="Ana bölümler">
 <button class="tab active" type="button" data-tab="grow">Büyüme Botu</button>
@@ -40,7 +40,7 @@ footer{color:var(--sub);font-size:12px;margin-top:28px;text-align:center}.hidden
 <div><label for="subcat">Alt tür</label><select id="subcat"></select></div></div>
 <label for="objective">Öncelikli hedef</label><select id="objective"><option value="followers">Gerçek abone / takipçi</option><option value="watch">Gerçek izlenme / izleyici tutma</option><option value="interaction">Beğeni / yorum / paylaşım</option><option value="balanced">Dengeli büyüme</option></select>
 <div class="grid2"><div><label for="audienceCountry">Hedef ülke</label><select id="audienceCountry"><option>Türkiye</option><option>Uluslararası</option><option>Almanya</option><option>Azerbaycan</option><option>Diğer</option></select></div><div><label for="audienceLang">Hedef dil</label><select id="audienceLang"><option>Türkçe</option><option>İngilizce</option><option>Almanca</option><option>Diğer</option></select></div></div>
-<label for="name">Kampanya adı (isteğe bağlı)</label><input id="name" maxlength="100" placeholder="Örn. TR2 TV son dakika haberi">
+<label for="name">Kampanya adı (isteğe bağlı)</label><input id="name" maxlength="100" placeholder="Örn. Gündem haber kampanyası">
 <button id="saveCampaign" class="primary full" type="button">Plan oluştur ve kaydet</button>
 <p id="formMsg" class="muted" role="status"></p>
 </div>
@@ -60,7 +60,7 @@ footer{color:var(--sub);font-size:12px;margin-top:28px;text-align:center}.hidden
 <div class="layout">
 <div class="card"><h2>Gerçek Hesaplarım</h2><p class="muted">Kendi hesabını eklemek için kayıt oluştur. Yazılımsal sayı sınırı yoktur. Parola veya token girme.</p>
 <label for="accountPlatform">Platform</label><select id="accountPlatform"><option>YouTube</option><option>Instagram</option><option>TikTok</option><option>Facebook</option></select>
-<label for="accountName">Hesap adı</label><input id="accountName" maxlength="100" placeholder="Örn. TR2 TV">
+<label for="accountName">Hesap adı</label><input id="accountName" maxlength="100" placeholder="Örn. Haber kanalım">
 <label for="accountUrl">Profil / sayfa adresi</label><input id="accountUrl" type="url" placeholder="https://...">
 <label class="check"><input id="owned" type="checkbox">Bu hesabın yönetim yetkisi bende.</label>
 <button id="saveAccount" class="primary full" type="button">Hesabı listeye kaydet</button><p id="accountMsg" role="status" class="muted"></p>
@@ -90,12 +90,12 @@ footer{color:var(--sub);font-size:12px;margin-top:28px;text-align:center}.hidden
 </div><div class="notice">YouTube'un para kazanmaya uygun izlenme saatlerini bu panel hesaplayıp onaylayamaz. Resmi geçerli saatleri YouTube Studio'dan doğrula.</div></div></div>
 <div class="card" style="margin-top:18px"><h2>Verilerim</h2><p class="muted">Bu ücretsiz sürüm kayıtları yalnızca kullandığın tarayıcıda saklar. Tarayıcı verilerini silersen kayıtlar kaybolabilir.</p><div class="row"><button id="exportData" type="button">JSON yedeği indir</button><button id="importBtn" type="button">JSON yedeğini geri yükle</button><input type="file" id="importFile" class="hidden" accept=".json,application/json"></div><p class="muted" id="backupMsg" role="status"></p></div>
 </section>
-<footer>TR2 Sosyal · Ücretsiz yerel MVP · Resmi OAuth/API veya bulut otomasyonu henüz bağlı değil. Yapay beğeni, abonelik ya da izlenme üretilmez.</footer>
+<footer>Sosyal Medya Yönetimi · Ücretsiz yerel MVP · Resmi OAuth/API veya bulut otomasyonu henüz bağlı değil. Yapay beğeni, abonelik ya da izlenme üretilmez.</footer>
 </div>
 <script>
 (function(){
 "use strict";
-const KEY="tr2_sosyal_v1";
+const KEY="sosyal_medya_yonetimi_v1";
 const defaults={campaigns:[],accounts:[],selected:null};
 let state=load();
 const $=id=>document.getElementById(id);
@@ -146,7 +146,7 @@ if(c.platform==="TikTok"){steps.push(["Keşfet ve seri üretimi","İlgili anahta
 if(c.platform==="Facebook"){steps.push(["Sayfa ve topluluk","Kendi sayfalarında özgün başlıkla paylaşın, grup kurallarına uygun tartışma açın."]);}
 steps.push(["Gönüllü abonelik ve paylaşım","İlgilenen gerçek kişilere açık takip/abonelik çağrısı yapın; izinsiz mesaj, toplu beğeni veya yapay izleme kullanmayın."]);
 return steps;}
-function makeCaption(c){const intro=c.cat==="music"?"🎵 "+c.sub+" sevenler için yeni içerik":c.cat==="news"?"TR2 TV | "+c.sub+" gündeminden yeni paylaşım":c.cat==="film"?"🎬 "+c.sub+" sevenler için bir içerik":"Yeni "+c.sub+" içeriği";const call=c.goal==="followers"?"Beğendiyseniz hesabı takip edebilir veya kanala abone olabilirsiniz.":c.goal==="watch"?"İzledikten sonra görüşünüzü paylaşın.":c.goal==="interaction"?"Konuyla ilgili düşüncelerinizi yorumlarda konuşalım.":"İçerik ilginizi çekerse paylaşabilir ve hesabı takip edebilirsiniz.";return intro+"\n"+call+"\n"+c.url;}
+function makeCaption(c){const intro=c.cat==="music"?"🎵 "+c.sub+" sevenler için yeni içerik":c.cat==="news"?"Güncel haber | "+c.sub+" gündeminden yeni paylaşım":c.cat==="film"?"🎬 "+c.sub+" sevenler için bir içerik":"Yeni "+c.sub+" içeriği";const call=c.goal==="followers"?"Beğendiyseniz hesabı takip edebilir veya kanala abone olabilirsiniz.":c.goal==="watch"?"İzledikten sonra görüşünüzü paylaşın.":c.goal==="interaction"?"Konuyla ilgili düşüncelerinizi yorumlarda konuşalım.":"İçerik ilginizi çekerse paylaşabilir ve hesabı takip edebilirsiniz.";return intro+"\n"+call+"\n"+c.url;}
 const tasks=[
 "1. gün: İçeriğin başlığını, kapak görselini ve açıklamasını gözden geçir.",
 "2. gün: Kendi yetkili hesabından ilgili bir hikâye veya özgün paylaşım hazırla.",
@@ -192,7 +192,7 @@ if(platform==="tg")url="https://t.me/share/url?url="+encodeURIComponent(c.url)+"
 if(platform==="x")url="https://twitter.com/intent/tweet?text="+encodeURIComponent(caption);
 if(url)window.open(url,"_blank","noopener,noreferrer");}
 async function copy(text){try{await navigator.clipboard.writeText(text);alert("Kopyalandı.");}catch(e){window.prompt("Metni elle kopyala:",text);}}
-function exportData(){const blob=new Blob([JSON.stringify(state,null,2)],{type:"application/json"}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="tr2-sosyal-yedek.json";a.click();setTimeout(()=>URL.revokeObjectURL(url),3000);}
+function exportData(){const blob=new Blob([JSON.stringify(state,null,2)],{type:"application/json"}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="sosyal-medya-yedek.json";a.click();setTimeout(()=>URL.revokeObjectURL(url),3000);}
 function importData(file){if(!file)return;if(file.size>2_000_000){recordMsg("backupMsg","Yedek çok büyük.");return;}const reader=new FileReader();reader.onload=()=>{try{const d=JSON.parse(reader.result);if(!Array.isArray(d.campaigns)||!Array.isArray(d.accounts)||d.campaigns.length>10000||d.accounts.length>10000)throw Error("format");const camps=d.campaigns.filter(c=>typeof c.url==="string"&&platformFor(c.url)&&typeof c.id==="string"&&typeof c.cat==="string"&&Object.hasOwn(cats,c.cat)).map(c=>({...c,name:String(c.name||"").slice(0,100),done:Array.isArray(c.done)?c.done.filter(i=>Number.isInteger(i)&&i>=0&&i<7):[]}));const accounts=d.accounts.filter(a=>typeof a.name==="string"&&typeof a.url==="string"&&platformFor(a.url)===a.platform&&typeof a.id==="string");if(!confirm("Mevcut kayıtlar yedek dosyasıyla değiştirilsin mi?"))return;state={campaigns:camps,accounts,selected:camps[0]?.id||null};persist();render();recordMsg("backupMsg","Yedek geri yüklendi.");}catch(e){recordMsg("backupMsg","Yedek okunamadı veya geçersiz.");}};reader.readAsText(file);}
 function render(){renderCampaigns();renderPlan();renderAccounts();renderMetrics();}
 document.querySelectorAll("[data-tab]").forEach(t=>{t.onclick=()=>{document.querySelectorAll("[data-tab]").forEach(x=>x.classList.toggle("active",x===t));document.querySelectorAll(".page").forEach(p=>p.classList.toggle("active",p.id===t.dataset.tab));};});
