@@ -49,9 +49,9 @@ footer{color:var(--sub);font-size:12px;margin-top:28px;text-align:center}.hidden
 <div id="planPanel" class="card hidden" style="margin-top:18px">
 <div class="row between"><h2 id="planTitle">Organik büyüme planı</h2><span id="planPlatform" class="tag"></span></div>
 <p id="planAudience" class="muted"></p>
-<div class="grid2"><div><h3>İlgili gerçek izleyiciye ulaşma</h3><ol class="steps" id="planSteps"></ol></div><div><h3>7 günlük ücretsiz görevler</h3><div id="taskList"></div></div></div>
+<div class="grid2"><div><h3>İlgili gerçek izleyiciye ulaşma</h3><ol class="steps" id="planSteps"></ol></div><div><h3>Otomasyon Durumu</h3><p class="muted">Bu kampanya için gerçekten kullanılabilen işlevler ve bağlantı gerektiren özellikler.</p><div id="automationStatus"></div></div></div>
 <label for="captionOut">Önerilen tanıtım metni</label><textarea id="captionOut" readonly></textarea>
-<div class="row" style="margin-top:10px"><button id="copyCaption" type="button">Metni kopyala</button><button id="copyLink" type="button">Linki kopyala</button><button id="shareWhatsApp" type="button">WhatsApp'ta aç</button><button id="shareTelegram" type="button">Telegram'da aç</button><button id="shareX" type="button">X'te aç</button></div>
+<div class="row" style="margin-top:10px"><button id="copyCaption" type="button">Metni kopyala</button><button id="copyLink" type="button">Linki kopyala</button><button id="shareWhatsApp" type="button">WhatsApp'ta paylaş</button><button id="shareTelegram" type="button">Telegram'da aç</button><button id="shareX" type="button">X'te aç</button></div>
 <p class="muted" style="margin-top:12px">Paylaşım penceresi açılır; göndermeden önce sen kontrol edersin. İstenmeyen toplu mesaj gönderimi yapılmaz.</p>
 </div>
 </section>
@@ -146,16 +146,20 @@ if(c.platform==="TikTok"){steps.push(["Keşfet ve seri üretimi","İlgili anahta
 if(c.platform==="Facebook"){steps.push(["Sayfa ve topluluk","Kendi sayfalarında özgün başlıkla paylaşın, grup kurallarına uygun tartışma açın."]);}
 steps.push(["Gönüllü abonelik ve paylaşım","İlgilenen gerçek kişilere açık takip/abonelik çağrısı yapın; izinsiz mesaj, toplu beğeni veya yapay izleme kullanmayın."]);
 return steps;}
-function makeCaption(c){const intro=c.cat==="music"?"🎵 "+c.sub+" sevenler için yeni içerik":c.cat==="news"?"Güncel haber | "+c.sub+" gündeminden yeni paylaşım":c.cat==="film"?"🎬 "+c.sub+" sevenler için bir içerik":"Yeni "+c.sub+" içeriği";const call=c.goal==="followers"?"Beğendiyseniz hesabı takip edebilir veya kanala abone olabilirsiniz.":c.goal==="watch"?"İzledikten sonra görüşünüzü paylaşın.":c.goal==="interaction"?"Konuyla ilgili düşüncelerinizi yorumlarda konuşalım.":"İçerik ilginizi çekerse paylaşabilir ve hesabı takip edebilirsiniz.";return intro+"\n"+call+"\n"+c.url;}
-const tasks=[
-"1. gün: İçeriğin başlığını, kapak görselini ve açıklamasını gözden geçir.",
-"2. gün: Kendi yetkili hesabından ilgili bir hikâye veya özgün paylaşım hazırla.",
-"3. gün: Konuyla ilgili, paylaşım kabul eden bir toplulukta katkı sağlayan duyuru yap.",
-"4. gün: Gerçek yorumları oku ve ilgili olanlara kişisel yanıt ver.",
-"5. gün: İçeriğe bağlı kısa bir tanıtım kesiti veya yeni özgün içerik yayınla.",
-"6. gün: Uygun bir içerik üreticisine gönüllü işbirliği öner.",
-"7. gün: Resmi istatistikleri gir ve hangi yöntemin işe yaradığını incele."
+function makeCaption(c){const intro=c.cat==="music"?"🎵 "+c.sub+" sevenler için yeni içerik":c.cat==="news"?"Güncel haber | "+c.sub+" konusunda yeni paylaşım":c.cat==="film"?"🎬 "+c.sub+" sevenler için bir içerik":"Yeni "+c.sub+" içeriği";const call=c.goal==="followers"?"Beğendiyseniz hesabı takip edebilir veya kanala abone olabilirsiniz.":c.goal==="watch"?"İzledikten sonra görüşünüzü paylaşın.":c.goal==="interaction"?"Konuyla ilgili düşüncelerinizi yorumlarda konuşalım.":"İçerik ilginizi çekerse paylaşabilir ve hesabı takip edebilirsiniz.";return intro+"\n"+call+"\n"+c.url;}
+const statuses=[
+["Bağlantı tanıma ve kategori seçimi","ÇALIŞIYOR","YouTube, Instagram, TikTok ve Facebook bağlantıları algılanır."],
+["Kampanya ve hedef kitle planı","ÇALIŞIYOR","Kampanya, kategoriye göre organik tanıtım planı ve önerilen metin kaydedilir."],
+["WhatsApp / Telegram / X paylaşımı","KULLANICI ONAYIYLA","Paylaşım sayfası açılır. Gönderilecek kişi ve mesajı sen seçersin."],
+["Kayıtlı hesaplardan otomatik yayın","HENÜZ BAĞLI DEĞİL","İzinli sayfalarda yayınlama için resmi OAuth ve platform API bağlantısı gerekir."],
+["Otomatik performans ölçümü","HENÜZ BAĞLI DEĞİL","Şu anda gerçek istatistikler Sonuç ve Analiz sekmesine manuel girilir."],
+["7/24 zamanlanmış işlemler","HENÜZ KURULMADI","Bu statik sayfada arka plan görevi/sunucu yoktur."]
 ];
+function renderAutomationStatus(){
+const target=$("automationStatus");target.replaceChildren();
+statuses.forEach(([title,status,desc])=>{const box=add(target,"div",undefined,"item");const line=add(box,"div",undefined,"row between");add(line,"strong",title);add(line,"span",status,"tag");add(box,"small",desc);});
+}
+
 function renderCampaigns(){const host=$("campaignList");host.replaceChildren();$("campaignTotal").textContent=state.campaigns.length+" kayıt";
 if(!state.campaigns.length)add(host,"div","Henüz kampanya eklenmedi.","empty");
 state.campaigns.forEach(c=>{const box=add(host,"div",undefined,"item"+(state.selected===c.id?" selected":""));
@@ -168,7 +172,7 @@ const del=add(row,"button","Sil","sm danger");del.onclick=()=>{if(confirm("Bu ka
 function renderPlan(){const p=$("planPanel"),c=state.campaigns.find(x=>x.id===state.selected);p.classList.toggle("hidden",!c);if(!c)return;
 $("planTitle").textContent=c.name||c.sub+" · "+c.platform;$("planPlatform").textContent=c.platform;$("planAudience").textContent="Hedef kitle: "+audiences(c)+" | Amaç: "+$("objective").querySelector('option[value="'+c.goal+'"]').textContent;
 const host=$("planSteps");host.replaceChildren();for(const [title,desc] of plan(c)){const li=add(host,"li");add(li,"strong",title);add(li,"span",desc);}
-const th=$("taskList");th.replaceChildren();c.done=c.done||[];tasks.forEach((t,i)=>{const label=add(th,"label",undefined,"check");const ch=add(label,"input");ch.type="checkbox";ch.checked=c.done.includes(i);ch.onchange=()=>{c.done=ch.checked?[...new Set([...c.done,i])]:c.done.filter(v=>v!==i);persist();};add(label,"span",t);});
+renderAutomationStatus();
 $("captionOut").value=makeCaption(c);
 }
 function campaign(){const url=$("postUrl").value.trim(),p=platformFor(url);if(!p){recordMsg("formMsg","Geçerli bir YouTube, Instagram, TikTok veya Facebook bağlantısı gir.");return;}
@@ -187,7 +191,7 @@ $("likeRate").textContent=pct(likes,views);$("followRate").textContent=pct(follo
 function saveMetrics(){const c=state.campaigns.find(x=>x.id===$("metricCampaign").value);if(!c){recordMsg("metricMsg","Önce kampanya oluştur.");return;}
 const data={};for(const k of ["views","likes","comments","shares","follows","watch"]){const v=Number($(k).value);if(!Number.isFinite(v)||v<0||(k!=="watch"&&!Number.isInteger(v))){recordMsg("metricMsg","Lütfen yalnızca geçerli pozitif istatistik gir.");return;}data[k]=v;}c.metrics=data;persist();showMetrics();recordMsg("metricMsg","Gerçek sonuçlar kaydedildi.");}
 function share(platform){const c=state.campaigns.find(x=>x.id===state.selected);if(!c)return;const caption=makeCaption(c);let url;
-if(platform==="wa")url="https://api.whatsapp.com/send?text="+encodeURIComponent(caption);
+if(platform==="wa")url="https://wa.me/?text="+encodeURIComponent(caption);
 if(platform==="tg")url="https://t.me/share/url?url="+encodeURIComponent(c.url)+"&text="+encodeURIComponent(caption.replace(c.url,"").trim());
 if(platform==="x")url="https://twitter.com/intent/tweet?text="+encodeURIComponent(caption);
 if(url)window.open(url,"_blank","noopener,noreferrer");}
