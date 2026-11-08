@@ -51,8 +51,8 @@ footer{color:var(--sub);font-size:12px;margin-top:28px;text-align:center}.hidden
 <p id="planAudience" class="muted"></p>
 <div class="grid2"><div><h3>İlgili gerçek izleyiciye ulaşma</h3><ol class="steps" id="planSteps"></ol></div><div><h3>Otomasyon Durumu</h3><p class="muted">Bu kampanya için gerçekten kullanılabilen işlevler ve bağlantı gerektiren özellikler.</p><div id="automationStatus"></div></div></div>
 <label for="captionOut">Önerilen tanıtım metni</label><textarea id="captionOut" readonly></textarea>
-<div class="row" style="margin-top:10px"><button id="copyCaption" type="button">Metni kopyala</button><button id="copyLink" type="button">Linki kopyala</button><button id="shareWhatsApp" type="button">WhatsApp'ta paylaş</button><button id="shareTelegram" type="button">Telegram'da aç</button><button id="shareX" type="button">X'te aç</button></div>
-<p class="muted" style="margin-top:12px">Paylaşım penceresi açılır; göndermeden önce sen kontrol edersin. İstenmeyen toplu mesaj gönderimi yapılmaz.</p>
+<div class="row" style="margin-top:10px"><button id="copyCaption" type="button">Metni kopyala</button><button id="copyLink" type="button">Linki kopyala</button></div>
+<p class="muted" style="margin-top:12px">Hedef platformlarda yetkili hesap bağlantıları henüz kurulmadı. Şimdilik tanıtım metnini ve bağlantıyı kopyalayabilirsin.</p>
 </div>
 </section>
 
@@ -150,7 +150,7 @@ function makeCaption(c){const intro=c.cat==="music"?"🎵 "+c.sub+" sevenler iç
 const statuses=[
 ["Bağlantı tanıma ve kategori seçimi","ÇALIŞIYOR","YouTube, Instagram, TikTok ve Facebook bağlantıları algılanır."],
 ["Kampanya ve hedef kitle planı","ÇALIŞIYOR","Kampanya, kategoriye göre organik tanıtım planı ve önerilen metin kaydedilir."],
-["WhatsApp / Telegram / X paylaşımı","KULLANICI ONAYIYLA","Paylaşım sayfası açılır. Gönderilecek kişi ve mesajı sen seçersin."],
+["Tanıtım bağlantısı ve metin hazırlama","ÇALIŞIYOR","Bağlantı ve önerilen metin hazırlanır, kopyalanabilir. Otomatik gönderim yoktur."],
 ["Kayıtlı hesaplardan otomatik yayın","HENÜZ BAĞLI DEĞİL","İzinli sayfalarda yayınlama için resmi OAuth ve platform API bağlantısı gerekir."],
 ["Otomatik performans ölçümü","HENÜZ BAĞLI DEĞİL","Şu anda gerçek istatistikler Sonuç ve Analiz sekmesine manuel girilir."],
 ["7/24 zamanlanmış işlemler","HENÜZ KURULMADI","Bu statik sayfada arka plan görevi/sunucu yoktur."]
@@ -190,11 +190,6 @@ function showMetrics(){const c=state.campaigns.find(x=>x.id===$("metricCampaign"
 $("likeRate").textContent=pct(likes,views);$("followRate").textContent=pct(follows,views);$("engRate").textContent=pct(likes+comments+shares,views);$("avgWatch").textContent=views?fmt(watch/views):"—";$("totalViews").textContent=fmt(views);$("totalFollows").textContent=fmt(follows);}
 function saveMetrics(){const c=state.campaigns.find(x=>x.id===$("metricCampaign").value);if(!c){recordMsg("metricMsg","Önce kampanya oluştur.");return;}
 const data={};for(const k of ["views","likes","comments","shares","follows","watch"]){const v=Number($(k).value);if(!Number.isFinite(v)||v<0||(k!=="watch"&&!Number.isInteger(v))){recordMsg("metricMsg","Lütfen yalnızca geçerli pozitif istatistik gir.");return;}data[k]=v;}c.metrics=data;persist();showMetrics();recordMsg("metricMsg","Gerçek sonuçlar kaydedildi.");}
-function share(platform){const c=state.campaigns.find(x=>x.id===state.selected);if(!c)return;const caption=makeCaption(c);let url;
-if(platform==="wa")url="https://wa.me/?text="+encodeURIComponent(caption);
-if(platform==="tg")url="https://t.me/share/url?url="+encodeURIComponent(c.url)+"&text="+encodeURIComponent(caption.replace(c.url,"").trim());
-if(platform==="x")url="https://twitter.com/intent/tweet?text="+encodeURIComponent(caption);
-if(url)window.open(url,"_blank","noopener,noreferrer");}
 async function copy(text){try{await navigator.clipboard.writeText(text);alert("Kopyalandı.");}catch(e){window.prompt("Metni elle kopyala:",text);}}
 function exportData(){const blob=new Blob([JSON.stringify(state,null,2)],{type:"application/json"}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="sosyal-medya-yedek.json";a.click();setTimeout(()=>URL.revokeObjectURL(url),3000);}
 function importData(file){if(!file)return;if(file.size>2_000_000){recordMsg("backupMsg","Yedek çok büyük.");return;}const reader=new FileReader();reader.onload=()=>{try{const d=JSON.parse(reader.result);if(!Array.isArray(d.campaigns)||!Array.isArray(d.accounts)||d.campaigns.length>10000||d.accounts.length>10000)throw Error("format");const camps=d.campaigns.filter(c=>typeof c.url==="string"&&platformFor(c.url)&&typeof c.id==="string"&&typeof c.cat==="string"&&Object.hasOwn(cats,c.cat)).map(c=>({...c,name:String(c.name||"").slice(0,100),done:Array.isArray(c.done)?c.done.filter(i=>Number.isInteger(i)&&i>=0&&i<7):[]}));const accounts=d.accounts.filter(a=>typeof a.name==="string"&&typeof a.url==="string"&&platformFor(a.url)===a.platform&&typeof a.id==="string");if(!confirm("Mevcut kayıtlar yedek dosyasıyla değiştirilsin mi?"))return;state={campaigns:camps,accounts,selected:camps[0]?.id||null};persist();render();recordMsg("backupMsg","Yedek geri yüklendi.");}catch(e){recordMsg("backupMsg","Yedek okunamadı veya geçersiz.");}};reader.readAsText(file);}
@@ -203,7 +198,7 @@ document.querySelectorAll("[data-tab]").forEach(t=>{t.onclick=()=>{document.quer
 $("category").onchange=subCats;$("postUrl").oninput=()=>{$("detected").textContent=platformFor($("postUrl").value)?"Algılanan platform: "+platformFor($("postUrl").value):"Geçerli bir platform bağlantısı gir.";};
 $("saveCampaign").onclick=campaign;$("saveAccount").onclick=account;$("metricCampaign").onchange=showMetrics;$("saveMetrics").onclick=saveMetrics;
 $("copyCaption").onclick=()=>copy($("captionOut").value);$("copyLink").onclick=()=>{const c=state.campaigns.find(x=>x.id===state.selected);if(c)copy(c.url);};
-$("shareWhatsApp").onclick=()=>share("wa");$("shareTelegram").onclick=()=>share("tg");$("shareX").onclick=()=>share("x");
+
 $("exportData").onclick=exportData;$("importBtn").onclick=()=>$("importFile").click();$("importFile").onchange=e=>importData(e.target.files[0]);
 subCats();render();
 })();
