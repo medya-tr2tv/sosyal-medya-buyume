@@ -16,7 +16,7 @@
 - Müzik (arabesk, pop, rap vb.), film/dizi (komedi vb.), haber, spor ve diğer alt kategoriler seçilir.
 - Gerçek abone/takipçi, izleyici tutma, gerçek beğeni/yorum veya dengeli büyüme hedefi seçilir.
 - Hedef kitle açıklaması, kategoriye özel erişim adımları, 7 günlük ücretsiz görevler ve paylaşım metni oluşturulur.
-- Kampanyalar kaydedilir ve silinir. WhatsApp, Telegram ve X paylaşım ekranları kullanıcı onayı için açılabilir.
+- Kampanyalar kaydedilir ve silinir. Bağlantılar ve tanıtım metinleri kopyalanabilir; hedef platformlara otomatik gönderim henüz aktif değildir.
 
 ### Gerçek Hesaplarım
 - YouTube, Instagram, TikTok ve Facebook hesaplarını ayrı bölümde listele.
