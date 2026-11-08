@@ -15,7 +15,9 @@
 - URL'den YouTube, Instagram, TikTok veya Facebook algılanır.
 - Müzik (arabesk, pop, rap vb.), film/dizi (komedi vb.), haber, spor ve diğer alt kategoriler seçilir.
 - Gerçek abone/takipçi, izleyici tutma, gerçek beğeni/yorum veya dengeli büyüme hedefi seçilir.
-- Hedef kitle açıklaması, kategoriye özel erişim adımları, 7 günlük ücretsiz görevler ve paylaşım metni oluşturulur.
+- Hedef kitle açıklaması, kategoriye özel erişim adımları, otomasyon durumu ve paylaşım metni oluşturulur.
+- Hedef türü (beğeni, izlenme, yorum, paylaşım, takipçi), başlangıç sayısı ve artırmak istediğin miktar seçilebilir. Bu alan **hedef takibidir**, platforma sahte veya otomatik etkileşim göndermez.
+- Gerçek rakamlar analize girilince hedef ilerlemesi görüntülenir.
 - Kampanyalar kaydedilir ve silinir. Bağlantılar ve tanıtım metinleri kopyalanabilir; hedef platformlara otomatik gönderim henüz aktif değildir.
 
 ### Gerçek Hesaplarım
