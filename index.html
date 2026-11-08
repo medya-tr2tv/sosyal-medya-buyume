@@ -38,17 +38,20 @@ footer{color:var(--sub);font-size:12px;margin-top:28px;text-align:center}.hidden
 <p id="detected" class="muted" style="margin-top:6px">Bağlantı platformu otomatik algılanır.</p>
 <div class="grid2"><div><label for="category">İçerik türü</label><select id="category"><option value="music">Müzik</option><option value="film">Film / Dizi</option><option value="news">Haber / Güncel</option><option value="other">Diğer</option></select></div>
 <div><label for="subcat">Alt tür</label><select id="subcat"></select></div></div>
+<div class="grid2"><div><label for="targetType">Hangi etkileşimi artırmak istiyorsun?</label><select id="targetType"><option value="likes">Beğeni</option><option value="views">İzlenme</option><option value="comments">Yorum</option><option value="shares">Yeniden paylaşım</option><option value="follows">Abone / Takipçi</option></select></div><div><label for="targetCount">Kazanılmasını hedeflediğin sayı</label><input id="targetCount" type="number" min="1" max="1000000" step="1" value="100"></div></div>
+<label for="targetBaseline">Gönderide şu anda görünen sayı (isteğe bağlı)</label><input id="targetBaseline" type="number" min="0" max="1000000000" step="1" value="0">
+<p class="muted" style="margin-top:7px">Örnek: Şu an 35 beğeni varsa ve 100 yeni beğeni istiyorsan, 35 ve 100 yaz. Bu hedef kaydıdır; platforma otomatik beğeni gönderilmez.</p>
 <label for="objective">Öncelikli hedef</label><select id="objective"><option value="followers">Gerçek abone / takipçi</option><option value="watch">Gerçek izlenme / izleyici tutma</option><option value="interaction">Beğeni / yorum / paylaşım</option><option value="balanced">Dengeli büyüme</option></select>
 <div class="grid2"><div><label for="audienceCountry">Hedef ülke</label><select id="audienceCountry"><option>Türkiye</option><option>Uluslararası</option><option>Almanya</option><option>Azerbaycan</option><option>Diğer</option></select></div><div><label for="audienceLang">Hedef dil</label><select id="audienceLang"><option>Türkçe</option><option>İngilizce</option><option>Almanca</option><option>Diğer</option></select></div></div>
 <label for="name">Kampanya adı (isteğe bağlı)</label><input id="name" maxlength="100" placeholder="Örn. Gündem haber kampanyası">
-<button id="saveCampaign" class="primary full" type="button">Plan oluştur ve kaydet</button>
+<button id="saveCampaign" class="primary full" type="button">Hedefi ve kampanyayı kaydet</button>
 <p id="formMsg" class="muted" role="status"></p>
 </div>
 <div class="card"><div class="row between"><h2>Kampanyalarım</h2><span id="campaignTotal" class="tag">0 kayıt</span></div><p class="muted">İçeriğinizi seçerek ücretsiz büyüme adımlarını görün.</p><div id="campaignList"></div></div>
 </div>
 <div id="planPanel" class="card hidden" style="margin-top:18px">
 <div class="row between"><h2 id="planTitle">Organik büyüme planı</h2><span id="planPlatform" class="tag"></span></div>
-<p id="planAudience" class="muted"></p>
+<p id="planAudience" class="muted"></p><div id="targetOverview" class="notice"></div>
 <div class="grid2"><div><h3>İlgili gerçek izleyiciye ulaşma</h3><ol class="steps" id="planSteps"></ol></div><div><h3>Otomasyon Durumu</h3><p class="muted">Bu kampanya için gerçekten kullanılabilen işlevler ve bağlantı gerektiren özellikler.</p><div id="automationStatus"></div></div></div>
 <label for="captionOut">Önerilen tanıtım metni</label><textarea id="captionOut" readonly></textarea>
 <div class="row" style="margin-top:10px"><button id="copyCaption" type="button">Metni kopyala</button><button id="copyLink" type="button">Linki kopyala</button></div>
@@ -160,23 +163,38 @@ const target=$("automationStatus");target.replaceChildren();
 statuses.forEach(([title,status,desc])=>{const box=add(target,"div",undefined,"item");const line=add(box,"div",undefined,"row between");add(line,"strong",title);add(line,"span",status,"tag");add(box,"small",desc);});
 }
 
+const metricLabels={likes:"beğeni",views:"izlenme",comments:"yorum",shares:"paylaşım",follows:"abone / takipçi"};
+function targetProgress(c){
+const t=c.target;
+if(!t||!Object.hasOwn(metricLabels,t.kind))return null;
+const current=c.metrics?.[t.kind];
+const recorded=typeof current==="number"&&Number.isFinite(current)&&current>=0;
+const gained=recorded?Math.max(0,current-(t.baseline||0)):0;
+return {kind:t.kind,amount:t.amount,baseline:t.baseline||0,gained,recorded,pct:recorded?Math.min(100,100*gained/t.amount):0};
+}
 function renderCampaigns(){const host=$("campaignList");host.replaceChildren();$("campaignTotal").textContent=state.campaigns.length+" kayıt";
 if(!state.campaigns.length)add(host,"div","Henüz kampanya eklenmedi.","empty");
 state.campaigns.forEach(c=>{const box=add(host,"div",undefined,"item"+(state.selected===c.id?" selected":""));
 add(box,"strong",c.name||c.sub+" · "+c.platform);add(box,"small",c.platform+" | "+catNames[c.cat]+" / "+c.sub+" | "+c.country);
+const progress=targetProgress(c);
+if(progress){add(box,"small","Hedef: +"+fmt(progress.amount)+" "+metricLabels[progress.kind]+" | "+(progress.recorded?"Raporlanan artış: "+fmt(progress.gained):"Gerçek sonuç henüz girilmedi"));if(progress.recorded){const bar=add(box,"progress");bar.max=100;bar.value=progress.pct;bar.style.width="100%";bar.setAttribute("aria-label","Hedef ilerlemesi");}}
 const row=add(box,"div",undefined,"row");
 const open=add(row,"button","Planı aç","sm");open.onclick=()=>{state.selected=c.id;persist();render();document.getElementById("planPanel").scrollIntoView({behavior:"smooth"});};
 const anchor=add(row,"a","Gönderiyi aç");anchor.href=c.url;anchor.target="_blank";anchor.rel="noopener noreferrer";
 const del=add(row,"button","Sil","sm danger");del.onclick=()=>{if(confirm("Bu kampanya silinsin mi?")){state.campaigns=state.campaigns.filter(x=>x.id!==c.id);if(state.selected===c.id)state.selected=state.campaigns[0]?.id||null;persist();render();}};
 });}
 function renderPlan(){const p=$("planPanel"),c=state.campaigns.find(x=>x.id===state.selected);p.classList.toggle("hidden",!c);if(!c)return;
-$("planTitle").textContent=c.name||c.sub+" · "+c.platform;$("planPlatform").textContent=c.platform;$("planAudience").textContent="Hedef kitle: "+audiences(c)+" | Amaç: "+$("objective").querySelector('option[value="'+c.goal+'"]').textContent;
+$("planTitle").textContent=c.name||c.sub+" · "+c.platform;$("planPlatform").textContent=c.platform;$("planAudience").textContent="Hedef kitle: "+audiences(c)+" | Öncelik: "+({followers:"Gerçek abone / takipçi",watch:"Gerçek izlenme / izleyici tutma",interaction:"Beğeni / yorum / paylaşım",balanced:"Dengeli büyüme"}[c.goal]||"Organik tanıtım");
+const tp=targetProgress(c);
+$("targetOverview").textContent=tp?("Hedef: +"+fmt(tp.amount)+" "+metricLabels[tp.kind]+". Başlangıç: "+fmt(tp.baseline)+". "+(tp.recorded?"Raporlanan artış: "+fmt(tp.gained)+" ("+tp.pct.toFixed(1)+"%).":"Gerçekleşen sonuç girilmedi.")+" Bu hedef, Instagram/YouTube/TikTok/Facebook sayacına otomatik etkileşim göndermez."):"Bu kampanya için sayısal hedef tanımlanmamış.";
 const host=$("planSteps");host.replaceChildren();for(const [title,desc] of plan(c)){const li=add(host,"li");add(li,"strong",title);add(li,"span",desc);}
 renderAutomationStatus();
 $("captionOut").value=makeCaption(c);
 }
 function campaign(){const url=$("postUrl").value.trim(),p=platformFor(url);if(!p){recordMsg("formMsg","Geçerli bir YouTube, Instagram, TikTok veya Facebook bağlantısı gir.");return;}
-const c={id:id(),url,platform:p,cat:$("category").value,sub:$("subcat").value,goal:$("objective").value,country:$("audienceCountry").value,lang:$("audienceLang").value,name:$("name").value.trim(),created:new Date().toISOString(),done:[],metrics:null};state.campaigns.unshift(c);state.selected=c.id;persist();render();recordMsg("formMsg","Kampanya kaydedildi. Aşağıda ücretsiz tanıtım planı hazır.");}
+const amount=Number($("targetCount").value),baseline=Number($("targetBaseline").value);
+if(!Number.isInteger(amount)||amount<1||amount>1000000||!Number.isInteger(baseline)||baseline<0||baseline>1000000000){recordMsg("formMsg","Hedef ve başlangıç sayısı geçerli tam sayı olmalı.");return;}
+const c={id:id(),url,platform:p,cat:$("category").value,sub:$("subcat").value,goal:$("objective").value,country:$("audienceCountry").value,lang:$("audienceLang").value,name:$("name").value.trim(),created:new Date().toISOString(),done:[],metrics:null,target:{kind:$("targetType").value,amount,baseline}};state.campaigns.unshift(c);state.selected=c.id;persist();render();recordMsg("formMsg","Hedef kaydedildi. Gerçek etkileşim göndermek yerine erişim planı hazırlandı; sonuçları Analiz bölümünden girebilirsin.");}
 function account(){const platform=$("accountPlatform").value,url=$("accountUrl").value.trim(),name=$("accountName").value.trim();if(!name||!safeLink(url)||!$("owned").checked){recordMsg("accountMsg","Geçerli hesap adı, URL ve yönetim yetkisi onayı gerekiyor.");return;}
 const detected=platformFor(url);if(detected!==platform){recordMsg("accountMsg","Profil linki seçtiğin platforma ait olmalı.");return;}
 if(state.accounts.some(x=>x.platform===platform&&x.url===url)){recordMsg("accountMsg","Bu hesap zaten kayıtlı.");return;}
@@ -189,7 +207,7 @@ function renderMetrics(){const sel=$("metricCampaign"),old=sel.value||state.sele
 function showMetrics(){const c=state.campaigns.find(x=>x.id===$("metricCampaign").value),m=c?.metrics||{};["views","likes","comments","shares","follows","watch"].forEach(k=>$(k).value=m[k]??0);const views=n(m.views),likes=n(m.likes),comments=n(m.comments),shares=n(m.shares),follows=n(m.follows),watch=n(m.watch);
 $("likeRate").textContent=pct(likes,views);$("followRate").textContent=pct(follows,views);$("engRate").textContent=pct(likes+comments+shares,views);$("avgWatch").textContent=views?fmt(watch/views):"—";$("totalViews").textContent=fmt(views);$("totalFollows").textContent=fmt(follows);}
 function saveMetrics(){const c=state.campaigns.find(x=>x.id===$("metricCampaign").value);if(!c){recordMsg("metricMsg","Önce kampanya oluştur.");return;}
-const data={};for(const k of ["views","likes","comments","shares","follows","watch"]){const v=Number($(k).value);if(!Number.isFinite(v)||v<0||(k!=="watch"&&!Number.isInteger(v))){recordMsg("metricMsg","Lütfen yalnızca geçerli pozitif istatistik gir.");return;}data[k]=v;}c.metrics=data;persist();showMetrics();recordMsg("metricMsg","Gerçek sonuçlar kaydedildi.");}
+const data={};for(const k of ["views","likes","comments","shares","follows","watch"]){const v=Number($(k).value);if(!Number.isFinite(v)||v<0||(k!=="watch"&&!Number.isInteger(v))){recordMsg("metricMsg","Lütfen yalnızca geçerli pozitif istatistik gir.");return;}data[k]=v;}c.metrics=data;persist();showMetrics();renderCampaigns();renderPlan();recordMsg("metricMsg","Gerçek sonuçlar kaydedildi ve hedef ilerlemesi güncellendi.");}
 async function copy(text){try{await navigator.clipboard.writeText(text);alert("Kopyalandı.");}catch(e){window.prompt("Metni elle kopyala:",text);}}
 function exportData(){const blob=new Blob([JSON.stringify(state,null,2)],{type:"application/json"}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="sosyal-medya-yedek.json";a.click();setTimeout(()=>URL.revokeObjectURL(url),3000);}
 function importData(file){if(!file)return;if(file.size>2_000_000){recordMsg("backupMsg","Yedek çok büyük.");return;}const reader=new FileReader();reader.onload=()=>{try{const d=JSON.parse(reader.result);if(!Array.isArray(d.campaigns)||!Array.isArray(d.accounts)||d.campaigns.length>10000||d.accounts.length>10000)throw Error("format");const camps=d.campaigns.filter(c=>typeof c.url==="string"&&platformFor(c.url)&&typeof c.id==="string"&&typeof c.cat==="string"&&Object.hasOwn(cats,c.cat)).map(c=>({...c,name:String(c.name||"").slice(0,100),done:Array.isArray(c.done)?c.done.filter(i=>Number.isInteger(i)&&i>=0&&i<7):[]}));const accounts=d.accounts.filter(a=>typeof a.name==="string"&&typeof a.url==="string"&&platformFor(a.url)===a.platform&&typeof a.id==="string");if(!confirm("Mevcut kayıtlar yedek dosyasıyla değiştirilsin mi?"))return;state={campaigns:camps,accounts,selected:camps[0]?.id||null};persist();render();recordMsg("backupMsg","Yedek geri yüklendi.");}catch(e){recordMsg("backupMsg","Yedek okunamadı veya geçersiz.");}};reader.readAsText(file);}
