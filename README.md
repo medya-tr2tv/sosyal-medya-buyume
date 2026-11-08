@@ -1,4 +1,4 @@
-# TR2 Sosyal Medya Büyüme Paneli
+# Sosyal Medya Büyüme ve Yönetim Paneli
 
 **Ücretsiz ilk sürüm:** YouTube, Instagram, TikTok ve Facebook için linkten organik kampanya planlama, ayrı gerçek hesap envanteri ve manuel analiz paneli.
 
